@@ -11,7 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-//controller turno B --> switchare ai branch master_turnoA o master_turnoC per turno A o C
+//controller turno C --> switchare ai branch master_turnoA o master_turnoB per turno A o B
 
 public class FXMLController {
 	
@@ -27,7 +27,7 @@ public class FXMLController {
     private TextArea txtResult;
 
     @FXML
-    private TextField voliMinimo;
+    private TextField compagnieMinimo;
 
     @FXML
     private Button btnAnalizza;
@@ -39,10 +39,13 @@ public class FXMLController {
     private Button btnAeroportiConnessi;
 
     @FXML
-    private TextField numeroOreTxtInput;
+    private ComboBox<?> cmbBoxAeroportoDestinazione;
 
     @FXML
-    private Button btnOttimizza;
+    private TextField numeroTratteTxtInput;
+
+    @FXML
+    private Button btnCercaItinerario;
 
     @FXML
     void doAnalizzaAeroporti(ActionEvent event) {
@@ -62,12 +65,13 @@ public class FXMLController {
     @FXML
     void initialize() {
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
-        assert voliMinimo != null : "fx:id=\"voliMinimo\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
+        assert compagnieMinimo != null : "fx:id=\"compagnieMinimo\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
         assert btnAnalizza != null : "fx:id=\"btnAnalizza\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
         assert cmbBoxAeroportoPartenza != null : "fx:id=\"cmbBoxAeroportoPartenza\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
         assert btnAeroportiConnessi != null : "fx:id=\"btnAeroportiConnessi\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
-        assert numeroOreTxtInput != null : "fx:id=\"numeroOreTxtInput\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
-        assert btnOttimizza != null : "fx:id=\"btnOttimizza\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
+        assert cmbBoxAeroportoDestinazione != null : "fx:id=\"cmbBoxAeroportoDestinazione\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
+        assert numeroTratteTxtInput != null : "fx:id=\"numeroTratteTxtInput\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
+        assert btnCercaItinerario != null : "fx:id=\"btnCercaItinerario\" was not injected: check your FXML file 'ExtFlightDelays.fxml'.";
 
     }
 
