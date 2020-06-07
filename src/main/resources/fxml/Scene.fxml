@@ -21,14 +21,14 @@
 	<center>
 		<VBox alignment="CENTER" prefHeight="90.0" prefWidth="580.0" BorderPane.alignment="CENTER_RIGHT">
 			<children>
-				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Esame 02-07-2018 Turno A">
+				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Esame 02-07-2018 Turno B">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></Text>
 				<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
 					<children>
-						<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Distanza minima " wrappingWidth="143.22216796875" />
-						<TextField fx:id="distanzaMinima" prefHeight="27.0" prefWidth="150.0">
+						<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero di voli minimo" wrappingWidth="143.22216796875" />
+						<TextField fx:id="voliMinimo" prefHeight="27.0" prefWidth="150.0">
 							<HBox.margin>
 								<Insets left="10.0" />
 							</HBox.margin>
@@ -67,13 +67,13 @@
 				</HBox>
 				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="74.0" prefHeight="100.0" prefWidth="200.0">
 					<children>
-						<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Miglia disponibili" wrappingWidth="144.83544921875" />
-						<TextField fx:id="numeroVoliTxtInput" prefHeight="27.0" prefWidth="150.0">
+						<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ore di volo" wrappingWidth="144.83544921875" />
+						<TextField fx:id="numeroOreTxtInput" prefHeight="27.0" prefWidth="150.0">
 							<HBox.margin>
 								<Insets left="10.0" />
 							</HBox.margin>
 						</TextField>
-						<Button fx:id="btnCercaItinerario" mnemonicParsing="false" onAction="#doCercaItinerario" prefWidth="150.0" text="Cerca itinerario">
+						<Button fx:id="btnOttimizza" mnemonicParsing="false" onAction="#doCercaItinerario" prefWidth="150.0" text="Ottimizza">
 							<HBox.margin>
 								<Insets left="10.0" />
 							</HBox.margin>
