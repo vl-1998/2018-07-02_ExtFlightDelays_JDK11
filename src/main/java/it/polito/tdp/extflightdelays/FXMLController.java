@@ -3,6 +3,8 @@ package it.polito.tdp.extflightdelays;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.extflightdelays.model.Airport;
+import it.polito.tdp.extflightdelays.model.ConnectedAirport;
 import it.polito.tdp.extflightdelays.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +35,7 @@ public class FXMLController {
     private Button btnAnalizza;
 
     @FXML
-    private ComboBox<?> cmbBoxAeroportoPartenza;
+    private ComboBox<Airport> cmbBoxAeroportoPartenza;
 
     @FXML
     private Button btnAeroportiConnessi;
@@ -46,17 +48,77 @@ public class FXMLController {
 
     @FXML
     void doAnalizzaAeroporti(ActionEvent event) {
+    	txtResult.clear();
+    	
+    	String dm = this.distanzaMinima.getText();
+    	Double distanzaMinima ;
+    	
+    	if(dm == null) {
+    		txtResult.appendText("Inserire valore distanza minima!");
+    		return;
+    	}
+    	
+    	try {
+    		distanzaMinima = Double.parseDouble(dm);
+    		
+    	} catch (IllegalArgumentException e) {
+        	txtResult.appendText("Inserire valore numerico!");
+        	return;
+        }
+    	
+    	this.model.creaGrafo(distanzaMinima);
+    	this.cmbBoxAeroportoPartenza.getItems().clear();
+    	this.cmbBoxAeroportoPartenza.getItems().addAll(this.model.getVertex());
+    	txtResult.appendText("Grafo creato!\n#Vertici = "+this.model.getVertex().size()+" #Archi = "+this.model.getEdge().size());
 
     }
 
     @FXML
     void doCalcolaAeroportiConnessi(ActionEvent event) {
+    	txtResult.clear();
+    	
+    	Airport a = this.cmbBoxAeroportoPartenza.getValue();
+    	
+    	if (a == null) {
+    		txtResult.appendText("Scegliere un aeroporto!");
+    	}
+    	
+    	for(ConnectedAirport c: this.model.direttamenteConnessi(a) ) {
+    		txtResult.appendText(c.toString()+"\n");
+    	}
 
     }
 
     @FXML
     void doCercaItinerario(ActionEvent event) {
-
+    	this.txtResult.clear();
+    	
+    	Airport a = this.cmbBoxAeroportoPartenza.getValue();
+    	
+    	if (a == null) {
+    		txtResult.appendText("Scegliere un aeroporto!");
+    	}
+    	
+    	String dm = this.numeroVoliTxtInput.getText();
+    	Double migliaDisponibili ;
+    	
+    	if(dm == null) {
+    		txtResult.appendText("Inserire valore distanza minima!");
+    		return;
+    	}
+    	
+    	try {
+    		migliaDisponibili = Double.parseDouble(dm);
+    		
+    	} catch (IllegalArgumentException e) {
+        	txtResult.appendText("Inserire valore numerico!");
+        	return;
+        }
+    	
+    	for(Airport a1 : this.model.ricorsiva(migliaDisponibili, a)) {
+    		txtResult.appendText(a1.toString()+"\n");
+    	}
+    	txtResult.appendText("\nMiglia totali percorse = "+this.model.getMiglia());
     }
 
     @FXML
